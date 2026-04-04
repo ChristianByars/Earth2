@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environment
+.venv/
+
+# Large generated data
+outputs/
+tp_outputs/
+
+# Logs
+*.log
+*.out
+*.err

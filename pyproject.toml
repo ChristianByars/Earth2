@@ -1,0 +1,44 @@
+[project]
+name = "earth2studio-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "black>=22.10.0",
+    "coverage>=6.5.0",
+    "gcsfs>=2026.1.0",
+    "earth2studio[cyclone,graphcast]",
+    "h5py>=3.11.0",
+    "imageio>=2.28.1",
+    "importlib-metadata>=8.7.1",
+    "jsbeautifier>=1.15.4",
+    "matplotlib>=3.8.1",
+    "more-itertools>=10.8.0",
+    "moviepy>=1.0.3",
+    "mpi4py>=4.1.1",
+    "numba>=0.63.1",
+    "numpy>=1.22.4",
+    "nvidia-physicsnemo>=0.5.0a0",
+    "pylibraft-cu12>=25.12.0",
+    "pynvml>=10.0.0",
+    "pytest>=6.0.0",
+    "sirfshampoo>=0.0.1",
+    "torch>=2.4.0",
+    "torch-harmonics>=0.8.0",
+    "tqdm>=4.60.0",
+    "wandb>=0.13.7",
+    "xarray>=2025.12.0",
+    "zarr>=3.1.5",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.nvidia.com/"
+
+[tool.uv.sources]
+earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+]
