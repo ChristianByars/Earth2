@@ -1,4 +1,4 @@
-# Earth2Studio Notebooks
+# Earth2Studio Notebook
 
 ![Hurricane Florence Track Comparison](images/Florence(9-18).png)
 
