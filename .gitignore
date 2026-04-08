@@ -17,3 +17,10 @@ tp_outputs/
 *.log
 *.out
 *.err
+florence_outputs/
+pangu_outputs/
+tcwv_outputs/
+wg_outputs/
+t2m_outputs/
+*.zarr
+*.pt
