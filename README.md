@@ -1,5 +1,7 @@
 # Earth2Studio Notebooks
 
+![Hurricane Florence Track Comparison](images/Florence(9-18).png)
+
 AI weather forecasting using NVIDIA Earth2Studio on the SDSU SCIL Nautilus cluster.
 
 ## Prerequisites
@@ -9,13 +11,13 @@ AI weather forecasting using NVIDIA Earth2Studio on the SDSU SCIL Nautilus clust
 
 ## Kubernetes Setup
 
-### 1. Set Namespace Context
+### Set Namespace Context
 
 ```bash
 kubectl config set-context nautilus --namespace=sdsu-shen-climate-lab
 ```
 
-### 2. Create Your Volume
+### Create Your Volume
 
 Copy the volume template and replace `{user}` with your username:
 
@@ -35,7 +37,7 @@ Apply it:
 kubectl create -f jupyter-volume-<your-username>.yaml -n sdsu-shen-climate-lab
 ```
 
-### 3. Create Your Pod
+### Create Your Pod
 
 Copy the pod template and replace `{user}` with your username:
 
@@ -54,7 +56,7 @@ Deploy:
 kubectl create -f jupyter-pod-L40-<your-username>.yaml -n sdsu-shen-climate-lab
 ```
 
-### 4. Connect to JupyterLab
+### Connect to JupyterLab
 
 Get your full pod name:
 
@@ -76,13 +78,13 @@ kubectl port-forward <your-full-pod-name> -n sdsu-shen-climate-lab 8888:8888
 
 Open the `http://127.0.0.1:8888/lab?token=...` URL from the logs in your browser. If port 8888 is taken locally, use `8889:8888` and update the URL accordingly.
 
-### 5. Shutdown
+### Shutdown
 
 ```bash
 kubectl delete -f jupyter-pod-L40-<your-username>.yaml -n sdsu-shen-climate-lab
 ```
 
-Your volume persists — your files will still be there next time you deploy.
+Your volume persists, your files will still be there next time you deploy.
 
 ## Installation
 
@@ -91,7 +93,6 @@ Inside the JupyterLab terminal, install `curl` and `uv`:
 ```bash
 sudo apt-get update && sudo apt-get install -y curl
 curl -LsSf https://astral.sh/uv/install.sh | sh
-source $HOME/.local/bin/env
 ```
 
 Clone the repo and install dependencies:
@@ -109,16 +110,6 @@ uv run python -m ipykernel install --user --name earth2 --display-name "Earth2 (
 ```
 
 Select **"Earth2 (Python 3.12)"** as the kernel when running notebooks.
-
-## Notebook
-
-| Notebook | Description |
-|---|---|
-| `Earth2.ipynb` | 2m temperature (FCN), 10m wind speed & MSLP (Pangu Weather), Hurricane Florence tracking (GraphCast vs FCN vs ERA5), and 850 hPa moisture visualization (GraphCast) |
-
-## Sample Output
-
-![DESCRIPTION](images/FILENAME.png)
 
 ## References
 
