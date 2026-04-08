@@ -5,7 +5,6 @@ AI weather forecasting using NVIDIA Earth2Studio on the SDSU SCIL Nautilus clust
 ## Prerequisites
 
 - `kubectl` configured with access to the `sdsu-shen-climate-lab` namespace
-- [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager
 - Python 3.12
 
 ## Kubernetes Setup
@@ -87,7 +86,15 @@ Your volume persists — your files will still be there next time you deploy.
 
 ## Installation
 
-Inside the JupyterLab terminal:
+Inside the JupyterLab terminal, install `curl` and `uv`:
+
+```bash
+sudo apt-get update && sudo apt-get install -y curl
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+```
+
+Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/ChristianByars/Earth2.git
@@ -103,20 +110,15 @@ uv run python -m ipykernel install --user --name earth2 --display-name "Earth2 (
 
 Select **"Earth2 (Python 3.12)"** as the kernel when running notebooks.
 
-## Notebooks
+## Notebook
 
 | Notebook | Description |
 |---|---|
-| `Earth2.ipynb` | <!-- TODO: description --> |
+| `Earth2.ipynb` | 2m temperature (FCN), 10m wind speed & MSLP (Pangu Weather), Hurricane Florence tracking (GraphCast vs FCN vs ERA5), and 850 hPa moisture visualization (GraphCast) |
 
 ## Sample Output
 
-<!-- Add your images to the images/ folder and update the paths below -->
-
-![TODO: caption](images/TODO.png)
-
-![TODO: caption](images/TODO.png)
-
+![DESCRIPTION](images/FILENAME.png)
 
 ## References
 

@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+# TODO: Change user to your ID so the deployment will be unique
+  name: jupyter-deployment-{user}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyter-deployment
+  template:
+    metadata:
+      labels:
+        app: jupyter-deployment
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            # Uncomment to select CSU-tide labelled nodes
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nautilus.io/csu-tide
+                operator: Exists
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-L40
+                # - NVIDIA-A100-80GB-PCIe
+      restartPolicy: Always
+            # Added to select rci-nrp-gpu-08.sdsu.edu instead of the label
+            # nodeSelectorTerms:
+            # - matchExpressions:
+            #   - key: kubernetes.io/hostname
+            #     operator: In
+            #     values:
+            #      - rci-nrp-gpu-08.sdsu.edu
+      # restartPolicy: Always
+      initContainers:
+      - name: take-data-dir-ownership
+        image: alpine:3
+        command: ["/bin/sh","-c","chown 0:100 /home/jovyan && chmod 775 /home/jovyan"]
+        volumeMounts:
+        - mountPath: /home/jovyan
+          name: jovyan-home
+      containers:
+      - name: gpu-container
+        image: henrylisdsu/nvidia-cuda-12.4:v2.5
+        command: ["jupyter", "lab", "--ip=0.0.0.0"]
+        resources:
+        # Limits are up to 1.2x of requested 
+          limits:
+            cpu: "5"
+            memory: "64Gi"
+            # Change the number of GPU required (up to 4)
+            nvidia.com/gpu: "1"
+            # nvidia.com/a100: "1"
+            ephemeral-storage: "80Gi"
+          requests:
+            cpu: "5"
+            memory: "64Gi"
+            # Change the number of GPU required (up to 4)
+            nvidia.com/gpu: "1"
+            # nvidia.com/a100: "1"
+            ephemeral-storage: "80Gi"
+        volumeMounts:
+        - mountPath: /home/jovyan
+          name: jovyan-home
+        - mountPath: /home/jovyan/shared/fourcastnet
+          name: fourcastnet-training-data
+        - mountPath: /dev/shm
+          name: dshm
+      volumes:
+      - name: jovyan-home
+        persistentVolumeClaim:
+        # TODO: Change volume to the name of your volume or claim
+          claimName: jupyter-volume-{user} 
+      - name: fourcastnet-training-data
+        persistentVolumeClaim:
+          claimName: fourcastnet-training-data
+      - name: dshm
+        emptyDir:
+          medium: Memory
+      tolerations:
+      - key: nautilus.io/csu-tide
+        operator: Exists
+        effect: NoSchedule
+      - key: nautilus.io/sdsu-fix
+        operator: Exists
+        effect: NoSchedule
+      - key: nautilus.io/reservation
+        operator: Equal
+        value: csu-tide
+        effect: NoSchedule
+      # Added this to change to tolerate nautilus.io/shen-lab taint
+      # - key: nautilus.io/shen-lab
+      #   operator: Exists
+      #   effect: NoSchedule

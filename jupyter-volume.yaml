@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # change the name of the PVC
+  # name: jupyter-volume-{change name}
+spec:
+  storageClassName: rook-ceph-block-tide
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
