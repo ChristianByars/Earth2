@@ -37,7 +37,7 @@ dependencies = [
 url = "https://pypi.nvidia.com/"
 
 [tool.uv.sources]
-earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git", rev = "0.13.0" }
 
 [dependency-groups]
 dev = [
