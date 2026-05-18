@@ -1,41 +1,29 @@
 [project]
-name = "earth2studio-project"
+name = "earth2"
 version = "0.1.0"
-description = "AI Weather Model Hurricane Comparison — FCN3 + AIFS"
 requires-python = "==3.12.*"
 dependencies = [
-    # FCN3  = torch-harmonics + makani (spherical neural operator)
-    # AIFS  = flash-attn + anemoi (ECMWF graph-transformer)
-    # cyclone = TCTrackerWuDuan
-    "earth2studio[cyclone,fcn3,aifs]",
-
+    "earth2studio[cyclone,data,sfno]",
     "torch>=2.4.0",
     "torch-harmonics>=0.8.0",
-
     "xarray>=2024.1.0",
     "zarr>=2.18.0",
     "gcsfs>=2024.1.0",
     "h5py>=3.11.0",
-
     "matplotlib>=3.8.1",
     "cartopy>=0.22.0",
-
     "numpy>=1.22.4",
     "tqdm>=4.60.0",
+    "ninja>=1.13.0",
     "nvidia-ml-py",
 ]
 
-[tool.uv.sources]
-earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git", rev = "0.13.0" }
-
-[tool.uv.extra-build-dependencies]
-torch-harmonics = ["torch"]
-flash-attn = ["torch", "setuptools"]
-
-[[tool.uv.index]]
-url = "https://pypi.nvidia.com/"
-
 [dependency-groups]
-dev = [
-    "ipykernel>=7.1.0",
-]
+dev = ["ipykernel>=7.1.0"]
+
+[tool.uv.sources]
+earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+
+[tool.uv]
+extra-build-dependencies = ["setuptools"]
+index-url = "https://pypi.nvidia.com"
