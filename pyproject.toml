@@ -5,7 +5,7 @@ requires-python = "==3.12.*"
 dependencies = [
     "earth2studio[cyclone,data,fcn,sfno]",
     "torch>=2.4.0",
-    "torch-harmonics>=0.8.0",
+    "torch-harmonics>=0.8.0,!=0.8.1",
     "xarray>=2024.1.0",
     "zarr>=2.18.0",
     "gcsfs>=2024.1.0",
@@ -23,10 +23,15 @@ dev = ["ipykernel>=7.1.0"]
 
 [tool.uv.sources]
 earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+torch = { index = "pytorch-cu124" }
 
 [tool.uv]
-override-dependencies = ["torch-harmonics==0.8.1"]
 index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
 
 [[tool.uv.index]]
 url = "https://pypi.nvidia.com"
