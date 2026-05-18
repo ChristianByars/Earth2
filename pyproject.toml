@@ -26,6 +26,8 @@ earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
 torch = { index = "pytorch-cu124" }
 
 [tool.uv]
+override-dependencies = ["torch-harmonics==0.8.1"]
+no-build-isolation-package = ["torch-harmonics"]
 index-strategy = "unsafe-best-match"
 
 [[tool.uv.index]]
