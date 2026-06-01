@@ -7,7 +7,11 @@ resolution-markers = [
 ]
 
 [manifest]
-overrides = [{ name = "torch-harmonics", specifier = "==0.8.1" }]
+overrides = [
+    { name = "cucim-cu13", marker = "python_full_version < '0'" },
+    { name = "cupy-cuda13x", marker = "python_full_version < '0'" },
+    { name = "torch-harmonics", specifier = "==0.8.1" },
+]
 
 [[package]]
 name = "affine"
@@ -606,21 +610,21 @@ wheels = [
 ]
 
 [[package]]
-name = "cucim-cu13"
+name = "cucim-cu12"
 version = "26.4.0"
 source = { registry = "https://pypi.nvidia.com/" }
 dependencies = [
     { name = "click" },
-    { name = "cupy-cuda13x" },
+    { name = "cupy-cuda12x" },
     { name = "lazy-loader" },
     { name = "numpy" },
-    { name = "nvidia-nvimgcodec-cu13" },
+    { name = "nvidia-nvimgcodec-cu12" },
     { name = "scikit-image" },
     { name = "scipy" },
 ]
 wheels = [
-    { url = "https://pypi.nvidia.com/cucim-cu13/cucim_cu13-26.4.0-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2ad94be2c46de4c7f06ca3020c74ddc1e87149b277d69116b00ef7a733d72bc8" },
-    { url = "https://pypi.nvidia.com/cucim-cu13/cucim_cu13-26.4.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:655292496907f5c3728ed5343806c940f226c2978ba0e6e327d2687284717cbb" },
+    { url = "https://pypi.nvidia.com/cucim-cu12/cucim_cu12-26.4.0-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:4afbcb80c1e3474d79019286a950d411004243957475a30b5f7fab2ee7f122d2" },
+    { url = "https://pypi.nvidia.com/cucim-cu12/cucim_cu12-26.4.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:75b3005a6b1f0f22334a7b264fdae75cc89382e2de221f193a99997e79b92fd0" },
 ]
 
 [[package]]
@@ -632,17 +636,17 @@ wheels = [
 ]
 
 [[package]]
-name = "cupy-cuda13x"
-version = "14.0.1"
+name = "cupy-cuda12x"
+version = "14.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cuda-pathfinder" },
     { name = "numpy" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7d/9b/7983b4e24749937dd4ab34565561a8c015e88df4ff9fd4678337b710b3ee/cupy_cuda13x-14.0.1-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:763f33f5641a28db5ac91788301271930e910813f1b1279119b504babeb1b863", size = 73616635, upload-time = "2026-02-20T10:24:14.115Z" },
-    { url = "https://files.pythonhosted.org/packages/5c/d4/42f79f6baea881c604982df18d158456e40071925bfdd53c1b6eb82f6e75/cupy_cuda13x-14.0.1-cp312-cp312-manylinux2014_x86_64.whl", hash = "sha256:a06cdc0d6a0054663fca4770e32df6a39cbeb7396a08b23f97965e5e1c0edb7d", size = 69793920, upload-time = "2026-02-20T10:24:20.287Z" },
-    { url = "https://files.pythonhosted.org/packages/ac/0c/83c6be011fa00a270c0d08985844fd992d59c34a6bb91755dad4f31942e8/cupy_cuda13x-14.0.1-cp312-cp312-win_amd64.whl", hash = "sha256:e91052340bab0860bdf1fd4e5a4fc85846800df6cc9a1de02a5afa1dd8655550", size = 35353554, upload-time = "2026-02-20T10:24:24.337Z" },
+    { url = "https://files.pythonhosted.org/packages/c4/11/c8ee77e4f285530527f3c2eb4a0df444056f5bd53451385d04e64d676cb5/cupy_cuda12x-14.1.0-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:0ef0fcdfea1a1c650c217f34223553e0914df140d82ecd457c047e849025c21c", size = 144383804, upload-time = "2026-05-23T01:10:11.429Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/0b/802bbda4b40957c3c151f8338436bbea225a9bd3290bed5488e32131d641/cupy_cuda12x-14.1.0-cp312-cp312-manylinux2014_x86_64.whl", hash = "sha256:cf33564a11c966de724a45bb84b30ca6fa08d0a3d5696316af230ba4177bfbde", size = 133516920, upload-time = "2026-05-23T01:10:16.586Z" },
+    { url = "https://files.pythonhosted.org/packages/05/2c/e4869255f3d1a153ec3ae815243be1b3c1a7a1d9011cdc3757201b18e032/cupy_cuda12x-14.1.0-cp312-cp312-win_amd64.whl", hash = "sha256:31c388f6b20acc265658363466cf58c5419e0ca47ff54d44d78e6ef6f997d3ac", size = 95238833, upload-time = "2026-05-23T01:10:21.589Z" },
 ]
 
 [[package]]
@@ -761,6 +765,8 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "cartopy" },
+    { name = "cucim-cu12" },
+    { name = "cupy-cuda12x" },
     { name = "earth2studio", extra = ["aifs", "aurora", "cyclone", "data", "fcn", "sfno"] },
     { name = "gcsfs" },
     { name = "h5py" },
@@ -769,6 +775,7 @@ dependencies = [
     { name = "ninja" },
     { name = "numpy" },
     { name = "nvidia-ml-py" },
+    { name = "pytest" },
     { name = "torch" },
     { name = "torch-harmonics" },
     { name = "tqdm" },
@@ -784,6 +791,8 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "cartopy", specifier = ">=0.22.0" },
+    { name = "cucim-cu12", specifier = ">=26.4.0" },
+    { name = "cupy-cuda12x", specifier = ">=14.0.0" },
     { name = "earth2studio", extras = ["aifs", "aurora", "cyclone", "data", "fcn", "sfno"], git = "https://github.com/NVIDIA/earth2studio.git" },
     { name = "gcsfs", specifier = ">=2024.1.0" },
     { name = "h5py", specifier = ">=3.11.0" },
@@ -792,6 +801,7 @@ requires-dist = [
     { name = "ninja", specifier = ">=1.13.0" },
     { name = "numpy", specifier = ">=1.22.4" },
     { name = "nvidia-ml-py" },
+    { name = "pytest", specifier = ">=9.0.3" },
     { name = "torch", specifier = ">=2.4.0", index = "https://download.pytorch.org/whl/cu124" },
     { name = "torch-harmonics", specifier = ">=0.8.0" },
     { name = "tqdm", specifier = ">=4.60.0" },
@@ -838,8 +848,6 @@ aurora = [
     { name = "microsoft-aurora" },
 ]
 cyclone = [
-    { name = "cucim-cu13" },
-    { name = "cupy-cuda13x" },
     { name = "scikit-image" },
 ]
 data = [
@@ -1017,12 +1025,14 @@ wheels = [
 [[package]]
 name = "flash-attn"
 version = "2.8.3"
-source = { registry = "https://pypi.org/simple" }
+source = { registry = "/home/jovyan/wheels" }
 dependencies = [
     { name = "einops" },
     { name = "torch" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3b/b2/8d76c41ad7974ee264754709c22963447f7f8134613fd9ce80984ed0dab7/flash_attn-2.8.3.tar.gz", hash = "sha256:1e71dd64a9e0280e0447b8a0c2541bad4bf6ac65bdeaa2f90e51a9e57de0370d", size = 8447812, upload-time = "2025-08-15T08:28:12.911Z" }
+wheels = [
+    { path = "/home/jovyan/wheels/flash_attn-2.8.3-cp312-cp312-linux_x86_64.whl" },
+]
 
 [[package]]
 name = "fonttools"
@@ -1483,6 +1493,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/f3/49/3b30cad09e7771a4982d9975a8cbf64f00d4a1ececb53297f1d9a7be1b10/importlib_metadata-8.7.1.tar.gz", hash = "sha256:49fef1ae6440c182052f407c8d34a68f72efc36db9ca90dc0113398f2fdde8bb", size = 57107, upload-time = "2025-12-21T10:00:19.278Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fa/5e/f8e9a1d23b9c20a551a8a02ea3637b4642e22c2626e3a13a9a29cdea99eb/importlib_metadata-8.7.1-py3-none-any.whl", hash = "sha256:5a1f80bf1daa489495071efbb095d75a634cf28a8bc299581244063b53176151", size = 27865, upload-time = "2025-12-21T10:00:18.329Z" },
+]
+
+[[package]]
+name = "iniconfig"
+version = "2.3.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/72/34/14ca021ce8e5dfedc35312d08ba8bf51fdd999c576889fc2c24cb97f4f10/iniconfig-2.3.0.tar.gz", hash = "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730", size = 20503, upload-time = "2025-10-18T21:55:43.219Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl", hash = "sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12", size = 7484, upload-time = "2025-10-18T21:55:41.639Z" },
 ]
 
 [[package]]
@@ -2318,13 +2337,13 @@ wheels = [
 ]
 
 [[package]]
-name = "nvidia-nvimgcodec-cu13"
+name = "nvidia-nvimgcodec-cu12"
 version = "0.7.0.11"
 source = { registry = "https://pypi.nvidia.com/" }
 wheels = [
-    { url = "https://pypi.nvidia.com/nvidia-nvimgcodec-cu13/nvidia_nvimgcodec_cu13-0.7.0.11-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:65ee61c93aaed80e21dc5db428bc7641fca6dcc319c166835a961359f7703736" },
-    { url = "https://pypi.nvidia.com/nvidia-nvimgcodec-cu13/nvidia_nvimgcodec_cu13-0.7.0.11-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:6075220b7ece40b5d975969f423e4ff9bc6d02bae4ac64ff8c8bf67d1234b12e" },
-    { url = "https://pypi.nvidia.com/nvidia-nvimgcodec-cu13/nvidia_nvimgcodec_cu13-0.7.0.11-py3-none-win_amd64.whl", hash = "sha256:39ef829c17e7bba7eb26c067604b0af77445ed611b5443b51579a913bbfa776f" },
+    { url = "https://pypi.nvidia.com/nvidia-nvimgcodec-cu12/nvidia_nvimgcodec_cu12-0.7.0.11-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:52d834be8122bb5b8fc3151cc3bedb95368b3e7ac76af0c4561772ab2a847b2b" },
+    { url = "https://pypi.nvidia.com/nvidia-nvimgcodec-cu12/nvidia_nvimgcodec_cu12-0.7.0.11-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:32d3457859c5784e4c0f6a2f56b6a9afec8fe646cec1cbe4bb5c320948d92dfe" },
+    { url = "https://pypi.nvidia.com/nvidia-nvimgcodec-cu12/nvidia_nvimgcodec_cu12-0.7.0.11-py3-none-win_amd64.whl", hash = "sha256:495e07e071fcb2115f7f1948a04f6c51f96d61b83c614af753f7cc1bf369a46c" },
 ]
 
 [[package]]
@@ -2580,6 +2599,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/9f/4a/0883b8e3802965322523f0b200ecf33d31f10991d0401162f4b23c698b42/platformdirs-4.9.6.tar.gz", hash = "sha256:3bfa75b0ad0db84096ae777218481852c0ebc6c727b3168c1b9e0118e458cf0a", size = 29400, upload-time = "2026-04-09T00:04:10.812Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/75/a6/a0a304dc33b49145b21f4808d763822111e67d1c3a32b524a1baf947b6e1/platformdirs-4.9.6-py3-none-any.whl", hash = "sha256:e61adb1d5e5cb3441b4b7710bea7e4c12250ca49439228cc1021c00dcfac0917", size = 21348, upload-time = "2026-04-09T00:04:09.463Z" },
+]
+
+[[package]]
+name = "pluggy"
+version = "1.6.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f9/e2/3e91f31a7d2b083fe6ef3fa267035b518369d9511ffab804f839851d2779/pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3", size = 69412, upload-time = "2025-05-15T12:30:07.975Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746", size = 20538, upload-time = "2025-05-15T12:30:06.134Z" },
 ]
 
 [[package]]
@@ -2939,6 +2967,22 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/c5/8d/b98aeffd325fc208e1624cf586d0c4dfb927bc7a2bce20d3b58ee80d2483/pystac_client-0.9.0.tar.gz", hash = "sha256:3908951583bcc6a3aaaf2828024a8e03764e6ca9d9f9f1d8149df587e14dd744", size = 52339, upload-time = "2025-07-18T15:44:41.1Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5d/d2/5f6367b14c9f250d1a6725d18bd1e9584f5ab1587e292f3a847e59189598/pystac_client-0.9.0-py3-none-any.whl", hash = "sha256:eed146b5980f93646aaa3a59080f11f1dcab6000b0bfbc28b1d0c6fd0a61eda1", size = 41826, upload-time = "2025-07-18T15:44:40.197Z" },
+]
+
+[[package]]
+name = "pytest"
+version = "9.0.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "iniconfig" },
+    { name = "packaging" },
+    { name = "pluggy" },
+    { name = "pygments" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7d/0d/549bd94f1a0a402dc8cf64563a117c0f3765662e2e668477624baeec44d5/pytest-9.0.3.tar.gz", hash = "sha256:b86ada508af81d19edeb213c681b1d48246c1a91d304c6c81a427674c17eb91c", size = 1572165, upload-time = "2026-04-07T17:16:18.027Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d4/24/a372aaf5c9b7208e7112038812994107bc65a84cd00e0354a88c2c77a617/pytest-9.0.3-py3-none-any.whl", hash = "sha256:2c5efc453d45394fdd706ade797c0a81091eccd1d6e4bccfcd476e2b8e0ab5d9", size = 375249, upload-time = "2026-04-07T17:16:16.13Z" },
 ]
 
 [[package]]
@@ -3541,12 +3585,14 @@ wheels = [
 [[package]]
 name = "torch-harmonics"
 version = "0.8.1"
-source = { registry = "https://pypi.org/simple" }
+source = { registry = "/home/jovyan/wheels" }
 dependencies = [
     { name = "numpy" },
     { name = "torch" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/de/04/ead4c1f0971577560db0ec8ba662ec27c41c43184ef9bb23d8023cf82f84/torch_harmonics-0.8.1.tar.gz", hash = "sha256:f9ff6b2a877e492c9a9fa98dec85eb4be36265e4ec737127fb6eb2537337e9ff", size = 5779945, upload-time = "2026-04-09T10:05:37.679Z" }
+wheels = [
+    { path = "/home/jovyan/wheels/torch_harmonics-0.8.1-cp312-cp312-linux_x86_64.whl" },
+]
 
 [[package]]
 name = "torchvision"

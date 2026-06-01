@@ -17,6 +17,12 @@ dependencies = [
     "ninja>=1.13.0",
     "nvidia-ml-py",
     "imageio>=2.34.0",
+    "cupy-cuda12x>=14.0.0",
+    "cucim-cu12>=26.4.0",
+    "pytest>=9.0.3",
+    "cupy-cuda12x>=14.0.0",
+    "cucim-cu12>=26.4.0",
+    "pytest>=9.0.3",
 ]
 
 [dependency-groups]
@@ -27,7 +33,15 @@ earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
 torch = { index = "pytorch-cu124" }
 
 [tool.uv]
-override-dependencies = ["torch-harmonics==0.8.1"]
+override-dependencies = [
+    
+    "torch-harmonics==0.8.1",
+    "cucim-cu13 ; python_version < '0'",
+    "cupy-cuda13x ; python_version < '0'",
+,
+    "cucim-cu13 ; python_version < '0'",
+    "cupy-cuda13x ; python_version < '0'",
+]
 no-build-isolation-package = ["torch-harmonics", "flash-attn"]
 index-strategy = "unsafe-best-match"
 
