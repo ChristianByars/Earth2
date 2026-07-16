@@ -1,6 +1,6 @@
 # Earth2Studio Notebook
 
-![Hurricane Florence Track Comparison](t2m_prediction.jpg)
+![Hurricane Florence Track Comparison](images/t2m_prediction.jpg)
 
 AI weather forecasting using NVIDIA Earth2Studio on the SDSU SCIL Nautilus cluster.
 
