@@ -1,6 +1,6 @@
 # Earth2Studio Notebook
 
-![Hurricane Florence Track Comparison](images/Florence(9-18).png)
+![Hurricane Florence Track Comparison](t2m_prediction.jpg)
 
 AI weather forecasting using NVIDIA Earth2Studio on the SDSU SCIL Nautilus cluster.
 
@@ -116,3 +116,4 @@ Select **"Earth2 (Python 3.12)"** as the kernel when running notebooks.
 - [NVIDIA Earth2Studio](https://github.com/NVIDIA/earth2studio)
 - [Earth2Studio Docs](https://nvidia.github.io/earth2studio/)
 - [uv](https://docs.astral.sh/uv/)
+- YouTube video link to my tutorial: https://www.youtube.com/watch?v=pEDuD49dReM
