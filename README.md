@@ -11,44 +11,32 @@ AI weather forecasting using NVIDIA Earth2Studio on the SDSU SCIL Nautilus clust
 
 ## Kubernetes Setup
 
-### Set Namespace Context
-
-```bash
-kubectl config set-context nautilus --namespace=sdsu-shen-climate-lab
-```
-
 ### Create Your Volume
 
-Copy the volume template and replace `{user}` with your username:
+Copy the volume template, then uncomment and set its name:
 
 ```bash
 cp jupyter-volume.yaml jupyter-volume-<your-username>.yaml
-```
-
-Edit `jupyter-volume-<your-username>.yaml` — uncomment and set the name on line 5:
-
-```yaml
-name: jupyter-volume-<your-username>
+sed -i 's/# name: jupyter-volume-{change name}/name: jupyter-volume-<your-username>/' jupyter-volume-<your-username>.yaml
 ```
 
 Apply it:
 
 ```bash
-kubectl create -f jupyter-volume-<your-username>.yaml -n sdsu-shen-climate-lab
+kubectl create -f jupyter-volume-<your-username>.yaml -n <your-namespace>
 ```
 
 ### Create Your Pod
 
-Copy the pod template and replace `{user}` with your username:
+Copy the pod template, then set the deployment name and volume claim:
 
 ```bash
 cp jupyter-pod-L40.yaml jupyter-pod-L40-<your-username>.yaml
+sed -i \
+  -e 's/jupyter-deployment-{user}/jupyter-deployment-<your-username>/' \
+  -e 's/jupyter-volume-{user}/jupyter-volume-<your-username>/' \
+  jupyter-pod-L40-<your-username>.yaml
 ```
-
-Edit `jupyter-pod-L40-<your-username>.yaml`:
-
-- **Line 5** — deployment name: `jupyter-deployment-<your-username>`
-- **Line 62** — volume claim: `jupyter-volume-<your-username>`
 
 Deploy:
 
@@ -58,22 +46,16 @@ kubectl create -f jupyter-pod-L40-<your-username>.yaml -n sdsu-shen-climate-lab
 
 ### Connect to JupyterLab
 
-Get your full pod name:
+Get the Jupyter URL with token from the deployment logs:
 
 ```bash
-kubectl get pods -n sdsu-shen-climate-lab
-```
-
-Get the Jupyter URL with token:
-
-```bash
-kubectl logs <your-full-pod-name> -n sdsu-shen-climate-lab
+kubectl logs deployment/jupyter-deployment-<your-username> -n sdsu-shen-climate-lab
 ```
 
 Port forward (in a second terminal):
 
 ```bash
-kubectl port-forward <your-full-pod-name> -n sdsu-shen-climate-lab 8888:8888
+kubectl port-forward deployment/jupyter-deployment-<your-username> -n sdsu-shen-climate-lab 8888:8888
 ```
 
 Open the `http://127.0.0.1:8888/lab?token=...` URL from the logs in your browser. If port 8888 is taken locally, use `8889:8888` and update the URL accordingly.
@@ -84,7 +66,7 @@ Open the `http://127.0.0.1:8888/lab?token=...` URL from the logs in your browser
 kubectl delete -f jupyter-pod-L40-<your-username>.yaml -n sdsu-shen-climate-lab
 ```
 
-Your volume persists, your files will still be there next time you deploy.
+Your volume persists across redeploys.
 
 ## Installation
 
@@ -106,10 +88,10 @@ uv sync
 Register the kernel:
 
 ```bash
-uv run python -m ipykernel install --user --name earth2 --display-name "Earth2 (Python 3.12)"
+uv run python -m ipykernel install --user --name earth2 --display-name "Earth2"
 ```
 
-Select **"Earth2 (Python 3.12)"** as the kernel when running notebooks.
+Open `Earth2.ipynb` and select the **"Earth2"** kernel.
 
 ## References
 
