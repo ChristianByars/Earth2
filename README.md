@@ -32,11 +32,11 @@ These figures are produced by the notebook. Forecast skill is not scored here; s
 | ERA5 (WeatherBench2 copy) | ECMWF reanalysis | — | 3 (reference track) |
 | GFS | NOAA | — | 1, 2, 4 |
 
-In section 3 the Wu–Duan tracker (`TCTrackerWuDuan` in Earth2Studio) extracts the storm path from each forecast and from ERA5.
+In section 3 the Wu–Duan tracker (`TCTrackerWuDuan` in Earth2Studio) extracts the storm paths from each forecast and from ERA5.
 
 ## Quick start
 
-Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU with 46 GB+ of VRAM.
+Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU with about 48 GB of VRAM (developed and tested on an L40).
 
 ```bash
 git clone https://github.com/ChristianByars/Earth2.git
@@ -45,7 +45,7 @@ uv sync
 uv run python -m ipykernel install --user --name earth2 --display-name "earth2"
 ```
 
-`uv sync` expects two prebuilt wheels (flash-attn and torch-harmonics) in a `wheels/` folder; see [docs/environment.md](docs/environment.md).
+`uv sync` expects a prebuilt torch-harmonics wheel in a `wheels/` folder; see [docs/environment.md](docs/environment.md).
 
 Open `Earth2.ipynb` in JupyterLab and select the **earth2** kernel, then run all cells.
 
