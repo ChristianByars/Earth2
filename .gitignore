@@ -30,3 +30,9 @@ aifs_outputs/
 sfno_outputs/
 aurora_outputs/
 .claude/
+
+# Executor scratch, renamed pre-cleanup outputs, and failed-run outputs
+.run/
+*.pre-cleanup/
+*.failed-*/
+wheels/
