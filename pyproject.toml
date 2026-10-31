@@ -4,7 +4,7 @@ version = "0.1.0"
 requires-python = "==3.12.*"
 dependencies = [
     "earth2studio[aifs2,aurora,cyclone,data,fcn,sfno]",
-    "torch>=2.4.0",
+    "torch>=2.13.0",
     "torch-harmonics>=0.8.0",
     "xarray>=2024.1.0",
     "zarr>=2.18.0",
@@ -17,8 +17,8 @@ dependencies = [
     "ninja>=1.13.0",
     "nvidia-ml-py",
     "imageio>=2.34.0",
-    "cupy-cuda12x>=14.0.0",
-    "cucim-cu12>=26.4.0",
+    "cupy-cuda13x>=14.0.0",
+    "cucim-cu13>=25.4.0",
     "pytest>=9.0.3",
 ]
 
@@ -27,20 +27,22 @@ dev = ["ipykernel>=7.1.0"]
 
 [tool.uv.sources]
 earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
-torch = { index = "pytorch-cu124" }
+torch = { index = "pytorch-cu132" }
 
 [tool.uv]
 override-dependencies = [
     "torch-harmonics==0.8.1",
-    "cucim-cu13 ; python_version < '0'",
-    "cupy-cuda13x ; python_version < '0'",
 ]
 no-build-isolation-package = ["torch-harmonics", "flash-attn"]
 index-strategy = "unsafe-best-match"
 
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch", "packaging", "ninja"]
+torch-harmonics = ["torch"]
+
 [[tool.uv.index]]
-name = "pytorch-cu124"
-url = "https://download.pytorch.org/whl/cu124"
+name = "pytorch-cu132"
+url = "https://download.pytorch.org/whl/cu132"
 explicit = true
 
 [[tool.uv.index]]
