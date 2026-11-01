@@ -14,6 +14,18 @@ These figures are produced by the notebook. Forecast skill is not scored here; s
 
 *Hurricane Florence: SFNO and FCN forecast tracks against the ERA5 reference track.*
 
+## Figures
+
+Every figure the notebook produces is saved at full size in [`figures/`](figures/), so you can browse them on GitHub without running anything:
+
+| Notebook section | Figure |
+|---|---|
+| 1. FCN 2 m temperature | [`t2m_prediction.jpg`](figures/t2m_prediction.jpg) |
+| 2. SFNO 10 m wind speed | [`sfno_wind10m.png`](figures/sfno_wind10m.png) |
+| 3. Hurricane Florence tracks | [`florence_tracks.png`](figures/florence_tracks.png) |
+| 4. Aurora 500 hPa height, day 14 | [`aurora_z500_final.png`](figures/aurora_z500_final.png) |
+| 4. Aurora 500 hPa height, 14-day animation | [`aurora_z500_nh_14day.gif`](figures/aurora_z500_nh_14day.gif) |
+
 ## Models and data
 
 | Model or data | Developer | Initial condition | Notebook section |
@@ -69,6 +81,7 @@ Runtimes depend on the AWS and Google Cloud data downloads and on what is alread
 ```text
 Earth2/
 ├── Earth2.ipynb          # the tutorial notebook
+├── figures/              # the figures the notebook produces, at full size
 ├── main.py               # placeholder entry point from the uv project template
 ├── jupyter-pod-L40.yaml  # Kubernetes pod template (SDSU Nautilus, one L40 GPU)
 ├── jupyter-volume.yaml   # Kubernetes persistent volume template
@@ -77,11 +90,11 @@ Earth2/
 └── docs/
     ├── environment.md    # pinned stack, install notes and fixes
     ├── kubernetes.md     # running on the SDSU Nautilus cluster
-    ├── images/           # figures embedded in this README
+    ├── images/           # the 2 figures embedded in this README (copies of figures/t2m_prediction.jpg and figures/florence_tracks.png)
     └── results/          # runs.csv: runtime and peak GPU memory of the verified run
 ```
 
-The notebook writes its forecasts and figures to git-ignored folders (`t2m_outputs/`, `sfno_outputs/`, `florence_outputs/`, `aurora_outputs/`).
+The notebook writes its forecasts and tracks to git-ignored data folders (`t2m_outputs/`, `sfno_outputs/`, `florence_outputs/`, `aurora_outputs/`) and every figure (PNG, JPG and the Aurora GIF) to the tracked `figures/` folder.
 
 ## Environment notes
 
