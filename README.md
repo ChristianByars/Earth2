@@ -8,7 +8,7 @@ AI weather forecasting with [NVIDIA Earth2Studio](https://github.com/NVIDIA/eart
 
 ## Results at a glance
 
-These figures are produced by the notebook. Forecast skill is not scored here; see the Hurricane-Forecasts and Flood-Forecasts repositories for verification against ERA5.
+These figures are produced by the notebook. Forecast skill is not scored here; see the [Hurricane-Forecasts](https://github.com/ChristianByars/Hurricane-Forecasts) and [Flood-Forecasts](https://github.com/ChristianByars/Flood-Forecasts) repositories for verification against ERA5.
 
 ![Hurricane Florence tracks forecast by SFNO and FCN compared with the ERA5 track](docs/images/florence_tracks.png)
 
@@ -52,12 +52,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## Notebooks
 
-Runtimes depend on the Copernicus CDS and cloud data downloads and on what is already cached; downloads dominate a first run.
+Runtimes depend on the AWS and Google Cloud data downloads and on what is already cached; downloads dominate a first run.
 
 <!-- RUNS:START -->
 | Notebook | Runtime | Peak GPU memory (GiB) |
 |---|---|---|
-| Earth2.ipynb | 11 min | 38.50 |
+| Earth2.ipynb | 10 min | 38.5 |
 <!-- RUNS:END -->
 
 | Notebook | What it covers |
@@ -77,7 +77,8 @@ Earth2/
 └── docs/
     ├── environment.md    # pinned stack, install notes and fixes
     ├── kubernetes.md     # running on the SDSU Nautilus cluster
-    └── images/           # figures embedded in this README
+    ├── images/           # figures embedded in this README
+    └── results/          # runs.csv: runtime and peak GPU memory of the verified run
 ```
 
 The notebook writes its forecasts and figures to git-ignored folders (`t2m_outputs/`, `sfno_outputs/`, `florence_outputs/`, `aurora_outputs/`).

@@ -19,7 +19,7 @@ sed -i 's/# name: jupyter-volume-{change name}/name: jupyter-volume-<your-userna
 Apply it:
 
 ```bash
-kubectl create -f jupyter-volume-<your-username>.yaml -n <your-namespace>
+kubectl create -f jupyter-volume-<your-username>.yaml -n sdsu-shen-climate-lab
 ```
 
 ### Create Your Pod
