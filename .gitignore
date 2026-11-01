@@ -35,5 +35,7 @@ aurora_outputs/
 .run/
 *.pre-cleanup/
 *.failed-*/
+# Local wheels (symlink to ../wheels) and any stray wheel file: never commit these
 wheels
+*.whl
 cufile.log
