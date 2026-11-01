@@ -10,17 +10,9 @@ AI weather forecasting with [NVIDIA Earth2Studio](https://github.com/NVIDIA/eart
 
 These figures are produced by the notebook. Forecast skill is not scored here; see the Hurricane-Forecasts and Flood-Forecasts repositories for verification against ERA5.
 
-![SFNO 10 m wind speed forecast over North America and the North Atlantic](docs/images/sfno_wind10m.png)
-
-*SFNO 10 m wind speed over North America and the North Atlantic.*
-
 ![Hurricane Florence tracks forecast by SFNO and FCN compared with the ERA5 track](docs/images/florence_tracks.png)
 
 *Hurricane Florence: SFNO and FCN forecast tracks against the ERA5 reference track.*
-
-![Aurora 500 hPa geopotential height over the Northern Hemisphere on the last day of the 14-day forecast](docs/images/aurora_z500.png)
-
-*Aurora 500 hPa geopotential height on the last day of the 14-day forecast.*
 
 ## Models and data
 
@@ -36,7 +28,7 @@ In section 3 the Wu–Duan tracker (`TCTrackerWuDuan` in Earth2Studio) extracts 
 
 ## Quick start
 
-Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU with about 48 GB of VRAM (developed and tested on an L40).
+Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU (developed and tested on an L40 with 48 GB; the table under *Notebooks* lists the notebook's peak GPU memory).
 
 ```bash
 git clone https://github.com/ChristianByars/Earth2.git
@@ -60,8 +52,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## Notebooks
 
+Runtimes depend on the Copernicus CDS and cloud data downloads and on what is already cached; downloads dominate a first run.
+
 <!-- RUNS:START -->
-_Runtime and GPU memory are filled in after the verified run._
+| Notebook | Runtime | Peak GPU memory (GiB) |
+|---|---|---|
+| Earth2.ipynb | 11 min | 38.50 |
 <!-- RUNS:END -->
 
 | Notebook | What it covers |
